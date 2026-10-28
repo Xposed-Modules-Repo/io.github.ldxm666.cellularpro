@@ -1,7 +1,7 @@
 name=CellularPro Unlocker
 summary=会员功能解锁 · 信令导出 · 测试计划
 description=CellularPro (make.more.r2d2.play.cellular_pro) 解锁模块：锁网页控件解锁、信令导出直接落盘、测试计划页面直开、信令查看次数上限解除。纯 Java 层实现，不依赖任何设备地址或机型。注意：锁网命令是否真正下发到基带取决于 app 自身原生层，本模块不改变该行为。
-version=3.0
-versionCode=3
+version=3.1
+versionCode=4
 minApiVersion=100
 targetApiVersion=102

@@ -6,7 +6,7 @@
 
 不改 APK，不重签名，不用手动敲命令，不绑定机型。
 
-[![Release](https://img.shields.io/badge/release-v3.0-2ea043?style=flat-square)](https://github.com/ldxm666/CellularPro-Unlocker/releases/latest)
+[![Release](https://img.shields.io/badge/release-v3.1-2ea043?style=flat-square)](https://github.com/ldxm666/CellularPro-Unlocker/releases/latest)
 [![Android](https://img.shields.io/badge/Android-8.0%2B-3ddc84?style=flat-square&logo=android&logoColor=white)]()
 [![LSPosed](https://img.shields.io/badge/LSPosed-API%20102-fc8d62?style=flat-square)]()
 [![Version](https://img.shields.io/badge/target-2.0.16.1-8b949e?style=flat-square)]()
@@ -15,6 +15,15 @@
 
 ---
 
+## v3.1 更新了什么（性能修复，建议所有 v3.0 用户升级）
+
+v3.0 里带了一套诊断用的重钩子，忘了在发布前拆掉，会拖死主线程：在 `FragmentLock` 和 `ge` 上挂了 169 个方法钩子，每次调用都走一遍调用栈；锁页一交互就开 12 秒窗口，期间每秒几十次的轮询全部走栈 + 拼串 + 写盘。
+
+表现：**锁页待一会儿，RSRP / SINR 不刷新，整个界面卡住。**
+
+v3.1 把这些全部拆掉：移除 169 个追踪钩子、移除 `View.setEnabled` 钩子、会员放行改成布尔标记、移除 logcat 镜像写入。功能一个没少。
+
+---
 ## v3.0 更新了什么
 
 - **锁网页控件全解锁**：锁 PCI / EARFCN / NR 小区 / NR 频点 / NR 频段 / LTE、WCDMA、GSM 频段，之前全是灰的点不动，现在都能点能填。
